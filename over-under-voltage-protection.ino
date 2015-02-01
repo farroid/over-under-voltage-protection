@@ -7,7 +7,7 @@ const byte RELAY = 12;
 
 const short VOLT = A0;
 const short DELAY = 1000; // 500ms
-const short DURATION = (1000 / DELAY) * 500; // (5 minutes == 500ms * 600)
+const short DURATION = (1000 / DELAY) * 300; // (5 minutes == 500ms * 600)
 
 // Max Volt = 570 (~300V)
 // Min Volt = 350 (~180V)
