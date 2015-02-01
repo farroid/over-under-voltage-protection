@@ -6,8 +6,8 @@ const byte LED_BOARD = 13;
 const byte RELAY = 12;
 
 const short VOLT = A0;
-const short DELAY = 500; // (5 minutes == 500ms * 600)
-const short DURATION = (1000 / DELAY) * 600;
+const short DELAY = 1000; // 500ms
+const short DURATION = (1000 / DELAY) * 600; // (5 minutes == 500ms * 600)
 
 // Max Volt = 570 (~300V)
 // Min Volt = 350 (~180V)
@@ -22,9 +22,9 @@ void setup() {
   pinMode(LED_BLUE, OUTPUT);
   pinMode(RELAY, OUTPUT);
   pinMode(LED_BOARD, OUTPUT);
-  
-  digitalWrite(LED_COMMON_GROUND, LOW); 
-  
+
+  digitalWrite(LED_COMMON_GROUND, LOW);
+
   wait = 0;
   led_state = false;
   //Serial.begin(9600);
@@ -47,11 +47,11 @@ void blink() {
 }
 // the loop function runs over and over again forever
 void loop() {
-    // read the input on analog pin A0:
+  // read the input on analog pin A0:
   short voltage = analogRead(VOLT);
-  
-  if(voltage > MIN_VOLT && voltage < MAX_VOLT) {
-    if(wait < DURATION) {
+
+  if (voltage >= MIN_VOLT && voltage <= MAX_VOLT) {
+    if (wait < DURATION) {
       ++wait;
       blink();
     } else {
@@ -60,9 +60,16 @@ void loop() {
   } else {
     wait = 0;
     switch_off();
-    blink();
+    analogWrite(LED_BLUE, 20);
+    delay(100);
+    analogWrite(LED_BLUE, 0);
+    delay(100);
+    analogWrite(LED_BLUE, 20);
+    delay(100);
+    analogWrite(LED_BLUE, 0);
+    delay(1000);
   }
-  
-  //Serial.println(voltage); 
+
+  //Serial.println(voltage);
   delay(DELAY); // delay in between reads for stability
 }

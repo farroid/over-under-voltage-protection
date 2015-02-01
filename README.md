@@ -1,9 +1,11 @@
 # over-under-voltage-protection
-Over Under Voltage Protection
+DIY Over/Under Voltage Protection for an household appliance.
 
 Components Used:
 
 1x Arduino UNO (https://www.sparkfun.com/products/11021)
+
+1x Solid State Relay (https://www.sparkfun.com/products/13015)
 
 1x Full-wave bridge rectifier (http://www.amazon.com/s/?field-keywords=full+wave+bridge+rectifier)
 
